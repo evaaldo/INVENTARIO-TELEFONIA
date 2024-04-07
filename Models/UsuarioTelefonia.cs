@@ -14,6 +14,7 @@ namespace InventarioTelefonia.Models
         public string? ICCID { get; set; }
         public string? Operadora { get; set; }
         public string? InventarioAparelho { get; set; }
+        public bool Ativo { get; set; }
         public DateTime DataInicial { get; set; }
         public DateTime DataFinal { get; set; }
     }

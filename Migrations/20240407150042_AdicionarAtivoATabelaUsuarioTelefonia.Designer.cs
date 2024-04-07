@@ -4,6 +4,7 @@ using InventarioTelefonia.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventarioTelefonia.Migrations
 {
     [DbContext(typeof(InventarioTelefoniaContext))]
-    partial class InventarioTelefoniaContextModelSnapshot : ModelSnapshot
+    [Migration("20240407150042_AdicionarAtivoATabelaUsuarioTelefonia")]
+    partial class AdicionarAtivoATabelaUsuarioTelefonia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
