@@ -36,7 +36,7 @@ namespace InventarioTelefonia.Controllers
             }
             catch(Exception error)
             {
-                return BadRequest(error);
+                return BadRequest(error.Message);
             }
         }
 
@@ -50,7 +50,7 @@ namespace InventarioTelefonia.Controllers
                 return Ok(usuarios);
             }
             catch(Exception error) {
-                return BadRequest(error);
+                return BadRequest(error.Message);
             }
         }
 
@@ -70,7 +70,7 @@ namespace InventarioTelefonia.Controllers
             }
             catch(Exception error)
             {
-                return BadRequest(error);
+                return BadRequest(error.Message);
             }
         }
 
@@ -116,7 +116,7 @@ namespace InventarioTelefonia.Controllers
             }
             catch(Exception error)
             {
-                return BadRequest(error);
+                return BadRequest(error.Message);
             }
         }
 
@@ -139,7 +139,7 @@ namespace InventarioTelefonia.Controllers
             }
             catch(Exception error)
             {
-                return BadRequest(error);
+                return BadRequest(error.Message);
             }
         }
     }

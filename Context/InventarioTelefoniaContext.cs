@@ -9,9 +9,7 @@ namespace InventarioTelefonia.Context
 {
     public class InventarioTelefoniaContext : DbContext
     {
-        public InventarioTelefoniaContext(DbContextOptions<InventarioTelefoniaContext> options) : base(options)
-        {
-        }
+        public InventarioTelefoniaContext(DbContextOptions<InventarioTelefoniaContext> options) : base(options) {}
 
         public DbSet<UsuarioTelefonia> UsuariosTelefonia { get; set; }
         public DbSet<CentroCusto> CentrosCusto { get; set; }
