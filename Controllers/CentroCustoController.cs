@@ -19,6 +19,27 @@ namespace InventarioTelefonia.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public IActionResult CadastrarCentroCusto(CentroCusto centroCusto)
+        {
+            try
+            {
+                if(!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                _context.Add(centroCusto);
+                _context.SaveChanges();
+
+                return Ok("Centro de custo cadastrado com sucesso!");
+            }
+            catch(Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
         [HttpGet]   
         public IActionResult ListarCentrosCusto()
         {
@@ -34,20 +55,19 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult CadastrarCentroCusto(CentroCusto centroCusto)
+        [HttpGet("{nome}")]
+        public IActionResult BuscarCentroCustoPorNome(string nome)
         {
             try
             {
-                if(!ModelState.IsValid)
+                var centroBanco = _context.CentrosCusto.Where(centro => centro.Nome.Contains(nome)).ToList();
+
+                if(centroBanco == null)
                 {
-                    return BadRequest(ModelState);
+                    return NotFound();
                 }
 
-                _context.Add(centroCusto);
-                _context.SaveChanges();
-
-                return Ok("Centro de custo cadastrado com sucesso!");
+                return Ok(centroBanco);
             }
             catch(Exception error)
             {
