@@ -33,5 +33,26 @@ namespace InventarioTelefonia.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpPost]
+        public IActionResult CadastrarCentroCusto(CentroCusto centroCusto)
+        {
+            try
+            {
+                if(!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                _context.Add(centroCusto);
+                _context.SaveChanges();
+
+                return Ok("Centro de custo cadastrado com sucesso!");
+            }
+            catch(Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
