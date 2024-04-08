@@ -124,5 +124,28 @@ namespace InventarioTelefonia.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletarCentroCusto(int id)
+        {
+            try
+            {
+                var centroBanco = _context.CentrosCusto.Where(centro => centro.ID.Equals(id));
+
+                if(centroBanco == null)
+                {
+                    return NotFound();
+                }
+
+                _context.CentrosCusto.Remove(centroBanco);
+                _context.SaveChanges();
+
+                return Ok("Centro removido com sucesso!");
+            }
+            catch(Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
