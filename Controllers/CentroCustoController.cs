@@ -74,5 +74,55 @@ namespace InventarioTelefonia.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpGet("Ativos/{ativo}")]
+        public IActionResult FiltrarCentroCustoAtivoOuInativo(bool ativo)
+        {
+            try
+            {
+                var centroBanco = _context.CentrosCusto.Where(centro => centro.Ativo.Equals(ativo)).ToList();
+
+                if(centroBanco == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(centroBanco);
+            }
+            catch(Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
+        [HttpPut]
+        public IActionResult EditarCentroCusto(CentroCusto centroCusto)
+        {
+            try
+            {
+                var centroBanco = _context.CentrosCusto.Find(centroCusto.ID);
+
+                if(centroBanco == null)
+                {
+                    return NotFound();
+                }
+
+                centroBanco.Cliente = centroCusto.Cliente;
+                centroBanco.Nome = centroCusto.Nome;
+                centroBanco.Codigo = centroCusto.Codigo;
+                centroBanco.Conta = centroCusto.Conta;
+                centroBanco.ClasseValor = centroCusto.ClasseValor;
+                centroBanco.Ativo = centroCusto.Ativo;
+
+                _context.CentrosCusto.Update(centroBanco);
+                _context.SaveChanges();
+
+                return Ok("Centro de custo alterado com sucesso!");   
+            }
+            catch(Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
