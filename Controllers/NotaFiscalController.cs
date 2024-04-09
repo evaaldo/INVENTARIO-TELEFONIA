@@ -69,5 +69,34 @@ namespace InventarioTelefonia.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpPut]
+        public IActionResult AlterarNotaFiscal(NotaFiscal notaFiscal)
+        {
+            try
+            {
+                var notaBanco = _context.NotasFiscais.Find(notaFiscal.ID);
+
+                if(notaBanco == null)
+                {
+                    return NotFound();
+                }
+
+                notaBanco.NumeroNF = notaFiscal.NumeroNF;
+                notaBanco.Fornecedor = notaFiscal.Fornecedor;
+                notaBanco.Cliente = notaFiscal.Cliente;
+                notaBanco.Soma = notaFiscal.Soma;
+                notaBanco.DataNF = notaFiscal.DataNF;
+
+                _context.NotasFiscais.Update(notaBanco);
+                _context.SaveChanges();
+
+                return Ok("Nota fiscal alterada com sucesso!");
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
