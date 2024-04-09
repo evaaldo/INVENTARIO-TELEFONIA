@@ -98,5 +98,28 @@ namespace InventarioTelefonia.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult RemoverNotaFiscal(int id)
+        {
+            try
+            {
+                var notaBanco = _context.NotasFiscais.Find(id);
+
+                if(notaBanco == null)
+                {
+                    return NotFound();
+                }
+
+                _context.NotasFiscais.Remove(notaBanco);
+                _context.SaveChanges();
+
+                return Ok("Nota fiscal removida com sucesso!");
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
