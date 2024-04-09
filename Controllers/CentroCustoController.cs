@@ -130,7 +130,7 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
-                var centroBanco = _context.CentrosCusto.Where(centro => centro.ID.Equals(id));
+                var centroBanco = _context.CentrosCusto.Find(id);
 
                 if(centroBanco == null)
                 {
