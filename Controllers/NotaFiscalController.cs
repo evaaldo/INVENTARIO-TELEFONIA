@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InventarioTelefonia.Context;
+using InventarioTelefonia.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventarioTelefonia.Controllers
@@ -16,6 +17,22 @@ namespace InventarioTelefonia.Controllers
         public NotaFiscalController(InventarioTelefoniaContext context)
         {
             _context = context;
+        }
+
+        [HttpPost]
+        public IActionResult AdicionarNotaFiscal(NotaFiscal notaFiscal)
+        {
+            try
+            {
+                _context.NotasFiscais.Add(notaFiscal);
+                _context.SaveChanges();
+
+                return Ok("Nota fiscal adicionada com sucesso!");
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
         }
 
         [HttpGet]   
