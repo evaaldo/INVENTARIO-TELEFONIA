@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InventarioTelefonia.Context;
+using InventarioTelefonia.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventarioTelefonia.Controllers
@@ -53,11 +54,14 @@ namespace InventarioTelefonia.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionarContrato()
+        public IActionResult AdicionarContrato(Contrato contrato)
         {
             try
             {
+                _context.Contratos.Add(contrato);
+                _context.SaveChanges();
 
+                return Ok("Seu contrato foi adicionado com sucesso!");
             }
             catch(Exception error)
             {
