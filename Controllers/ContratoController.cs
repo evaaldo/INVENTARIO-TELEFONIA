@@ -32,12 +32,19 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult BuscarContratoPorNome()
+        [HttpGet("{id}")]
+        public IActionResult BuscarContratoPorID(int id)
         {
             try
             {
+                var contratoBanco = _context.Contratos.Where(contrato => contrato.ID == id);
 
+                if(contratoBanco == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(contratoBanco);
             }
             catch(Exception error)
             {
