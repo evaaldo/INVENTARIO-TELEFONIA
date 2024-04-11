@@ -70,11 +70,29 @@ namespace InventarioTelefonia.Controllers
         }
 
         [HttpPut]
-        public IActionResult EditarContrato()
+        public IActionResult EditarContrato(Contrato contrato)
         {
             try
             {
+                var contratoBanco = _context.Contratos.Find(contrato.ID);
 
+                if(contratoBanco == null)
+                {
+                    return NotFound();
+                }
+
+                contratoBanco.TipoDocumento = contrato.TipoDocumento;
+                contratoBanco.Contratante = contrato.Contratante;
+                contratoBanco.Contratado = contrato.Contratado;
+                contratoBanco.NumeroContrato = contrato.NumeroContrato;
+                contratoBanco.ObjetoContrato = contrato.ObjetoContrato;
+                contratoBanco.DataFinal = contrato.DataFinal;
+                contratoBanco.DataFinal = contrato.DataFinal;
+
+                _context.Update(contratoBanco);
+                _context.SaveChanges();
+
+                return Ok("O contrato foi modificado com sucesso!");
             }
             catch(Exception error)
             {
@@ -82,12 +100,12 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        [HttpDelete]
-        public IActionResult RemoverContrato()
+        [HttpDelete("{id}")]
+        public IActionResult RemoverContrato(int id)
         {
             try
             {
-
+                
             }
             catch(Exception error)
             {
