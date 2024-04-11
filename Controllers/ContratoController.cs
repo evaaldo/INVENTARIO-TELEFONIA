@@ -105,7 +105,14 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
-                
+                var contratoBanco = _context.Contratos.Find(id);
+
+                if(contratoBanco == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok("Contrato removido com sucesso!");
             }
             catch(Exception error)
             {
