@@ -26,7 +26,7 @@ namespace InventarioTelefonia.Controllers
             {
                 var numerosClientes = _context.NumerosClientes.ToList();
 
-                return Ok(numerosClientes)
+                return Ok(numerosClientes);
             }
             catch (Exception error)
             {
