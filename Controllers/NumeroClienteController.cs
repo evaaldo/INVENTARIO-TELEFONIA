@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InventarioTelefonia.Context;
+using InventarioTelefonia.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventarioTelefonia.Controllers
@@ -53,11 +54,15 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        public IActionResult AdicionarNumeroCliente()
+        [HttpPost]
+        public IActionResult AdicionarNumeroCliente(NumeroCliente numeroCliente)
         {
             try
             {
+                _context.NumerosClientes.Add(numeroCliente);
+                _context.SaveChanges();
 
+                return Ok("Número do cliente salvo com sucesso!");
             }
             catch (Exception error)
             {
