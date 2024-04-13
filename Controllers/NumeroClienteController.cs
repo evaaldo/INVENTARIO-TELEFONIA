@@ -82,11 +82,19 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        public IActionResult RemoverNumeroCliente()
+        [HttpDelete("{id}")]
+        public IActionResult RemoverNumeroCliente(int id)
         {
             try
             {
+                var numeroCliente = _context.NumerosClientes.Find(id);
 
+                if(numeroCliente == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok("Número removido com suceso!");
             }
             catch (Exception error)
             {
