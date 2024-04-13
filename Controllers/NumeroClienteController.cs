@@ -22,7 +22,9 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
+                var numerosClientes = _context.NumerosClientes.ToList();
 
+                return Ok(numerosClientes)
             }
             catch (Exception error)
             {
