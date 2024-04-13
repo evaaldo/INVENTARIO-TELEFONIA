@@ -18,6 +18,7 @@ namespace InventarioTelefonia.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult ListarNumerosClientes()
         {
             try
@@ -32,11 +33,19 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        public IActionResult BuscarNumeroCliente()
+        [HttpGet("{numero}")]
+        public IActionResult BuscarNumeroCliente(string numero)
         {
             try
             {
+                var numeroCliente = _context.NumerosClientes.Where(num => num.Numero.Contains(numero));
 
+                if(numeroCliente == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(numeroCliente);
             }
             catch (Exception error)
             {
