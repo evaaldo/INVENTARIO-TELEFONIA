@@ -70,11 +70,29 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        public IActionResult EditarNumeroCliente()
+        [HttpPut]
+        public IActionResult EditarNumeroCliente(NumeroCliente numeroCliente)
         {
             try
             {
+                var numeroBanco = _context.NumerosClientes.Find(numeroCliente.ID);
 
+                if(numeroBanco == null)
+                {
+                    return NotFound();
+                }
+
+                numeroBanco.Numero = numeroCliente.Numero;
+                numeroBanco.Operadora = numeroCliente.Operadora;
+                numeroBanco.Departamento = numeroCliente.Departamento;
+                numeroBanco.DataAtivacao = numeroCliente.DataAtivacao;
+                numeroBanco.DataDesativacao = numeroCliente.DataDesativacao;
+                numeroBanco.Virtual = numeroCliente.Virtual;
+
+                _context.NumerosClientes.Update(numeroBanco);
+                _context.SaveChanges();
+
+                return Ok("Número do cliente atualizado com sucesso!");
             }
             catch (Exception error)
             {
