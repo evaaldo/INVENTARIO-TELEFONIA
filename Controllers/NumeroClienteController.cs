@@ -17,5 +17,65 @@ namespace InventarioTelefonia.Controllers
         {
             _context = context;
         }
+
+        public IActionResult ListarNumerosClientes()
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
+        public IActionResult BuscarNumeroCliente()
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
+        public IActionResult AdicionarNumeroCliente()
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
+        public IActionResult EditarNumeroCliente()
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
+        public IActionResult RemoverNumeroCliente()
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace InventarioTelefonia.Models
         public string? Numero { get; set; }
         public string? Operadora { get; set; }
         public string? Departamento { get; set; }
-        public bool Desativacao { get; set; }
-        public bool Virtual { get; set; }
+        public DateTime DataDesativacao { get; set; }
+        public DateTime DataVirtual { get; set; }
     }
 }
