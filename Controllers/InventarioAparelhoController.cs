@@ -108,7 +108,14 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
+                var aparelhoBanco = _context.InventariosAparelho.Find(id);
 
+                if(aparelhoBanco == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok("Aparelho removido com sucesso!");
             }
             catch(Exception error)
             {
