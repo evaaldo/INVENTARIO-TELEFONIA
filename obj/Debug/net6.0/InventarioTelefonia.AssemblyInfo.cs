@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InventarioTelefonia")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+841dce8a9be6f5b2c4c1d40f3945c79919de68bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb5ae8413cb91751beb51bfbc2feb8b7e4253022")]
 [assembly: System.Reflection.AssemblyProductAttribute("InventarioTelefonia")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InventarioTelefonia")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
