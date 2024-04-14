@@ -24,7 +24,7 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
-
+                
             }
             catch(Exception error)
             {
@@ -37,7 +37,9 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
+                var aparelhosBanco = _context.InventariosAparelho.ToList();
 
+                return Ok(aparelhosBanco);
             }
             catch(Exception error)
             {
