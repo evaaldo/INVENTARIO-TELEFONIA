@@ -75,12 +75,14 @@ namespace InventarioTelefonia.Controllers
             }
         }
 
-        [HttpGet("{ativo}")]
-        public IActionResult FiltrarAparelhosAtivos(bool ativo)
+        [HttpGet("{disponivel}")]
+        public IActionResult FiltrarAparelhosDisponivel(bool disponivel)
         {
             try
             {
+                var aparelhoBanco = _context.InventariosAparelho.Where(aparelho => aparelho.Disponivel == disponivel);
 
+                return Ok(aparelhoBanco);
             }
             catch(Exception error)
             {
