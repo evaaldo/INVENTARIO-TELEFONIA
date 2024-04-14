@@ -60,7 +60,14 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
+                var aparelhoBanco = _context.InventariosAparelho.Where(aparelho => aparelho.NumeroSerie.Contains(numeroSerie));
 
+                if(aparelhoBanco == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(aparelhoBanco)                ;
             }
             catch(Exception error)
             {
