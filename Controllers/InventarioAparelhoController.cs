@@ -24,7 +24,15 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
-                
+                if(!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                _context.InventariosAparelho.Add(aparelho);
+                _context.SaveChanges();
+
+                return Ok("Aparelho adicionado com sucesso!");
             }
             catch(Exception error)
             {
