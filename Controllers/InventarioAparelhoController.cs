@@ -95,7 +95,23 @@ namespace InventarioTelefonia.Controllers
         {
             try
             {
+                var aparelhoBanco = _context.InventariosAparelho.Find(aparelho.ID);
 
+                if(aparelhoBanco == null)
+                {
+                    return NotFound();
+                }
+
+                aparelhoBanco.ModeloAparelho = aparelho.ModeloAparelho;
+                aparelhoBanco.DataAquisicao = aparelho.DataAquisicao;
+                aparelhoBanco.DataDesativacao = aparelho.DataDesativacao;
+                aparelhoBanco.NumeroSerie = aparelho.NumeroSerie;
+                aparelhoBanco.Modalidade = aparelho.Modalidade;
+                aparelhoBanco.Mantenedora = aparelho.Mantenedora;
+                aparelhoBanco.Disponivel = aparelho.Disponivel;
+
+                _context.InventariosAparelho.Update(aparelhoBanco);
+                _context.SaveChanges();
             }
             catch(Exception error)
             {
