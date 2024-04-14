@@ -16,5 +16,6 @@ namespace InventarioTelefonia.Context
         public DbSet<NotaFiscal> NotasFiscais { get; set; }
         public DbSet<Contrato> Contratos { get; set; }
         public DbSet<NumeroCliente> NumerosClientes { get; set; }
+        public DbSet<InventarioAparelho> InventariosTelfonia { get; set; }
     }
 }
